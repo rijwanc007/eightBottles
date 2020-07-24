@@ -4,12 +4,10 @@ import {
     StyleSheet,
     Image,
     Text,
-    TouchableOpacity,
-    View
+    View,
 }
     from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import {Rect} from "react-native-svg";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -81,16 +79,12 @@ class LandingPage extends Component{
                     <Text style={styles.textDesign}>Hi There,</Text>
                     <Text style={styles.textDesign}>Let's get you started</Text>
                 </View>
-                <TouchableOpacity  onPress = {goToSignUp}>
-                    <Text style = {styles.create_button}>
-                        Create an account
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress = {goToAbout}>
-                    <Text style = {styles.login_button}>
-                        Login
-                    </Text>
-                </TouchableOpacity>
+                <Text onPress = {goToSignUp} style = {styles.create_button}>
+                    Create an account
+                </Text>
+                <Text onPress = {goToAbout} style = {styles.login_button}>
+                    Login
+                </Text>
                 <StatusBar style="auto" />
             </View>
         );

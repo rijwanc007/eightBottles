@@ -27,7 +27,6 @@ class App extends Component{
             return (
                      <Router>
                         <Scene>
-                            <Scene key = "home" component = {HomePage}  title = "HomePage" />
                             <Scene hideTabBar
                                    hideNavBar
                                    key="landing"

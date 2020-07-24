@@ -1,33 +1,17 @@
 import React,{Component} from 'react';
 import {
-    StyleSheet,
-    Text,
-    View,
-    TextInput, TouchableOpacity
+        StyleSheet,
+        Text,
+        View,
+        Image
 }
-    from 'react-native';
-import Svg, {
-    Circle,
-    Ellipse,
-    G,
-    TSpan,
-    TextPath,
-    Path,
-    Polygon,
-    Polyline,
-    Line,
-    Rect,
-    Use,
-    Image,
-    Symbol,
-    Defs,
-    LinearGradient,
-    RadialGradient,
-    Stop,
-    ClipPath,
-    Pattern,
-    Mask,
-} from 'react-native-svg';
+from 'react-native';
+import  Svg, {
+        Ellipse,
+        Path,
+        Rect,
+}
+from 'react-native-svg';
 import {Actions} from "react-native-router-flux";
 import { Input } from 'react-native-elements';
 const styles = StyleSheet.create({
@@ -35,7 +19,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ECECEC',
     },
-
     hello : {
         left: 46,
         top: 105,
@@ -65,7 +48,7 @@ const styles = StyleSheet.create({
         left: 55.5,
         top: 270.444,
         overflow: 'visible',
-        },
+    },
     Oval : {
         position: 'absolute',
         overflow: 'visible',
@@ -90,6 +73,14 @@ const styles = StyleSheet.create({
         height: 2,
         left: 94.5,
         top: 256,
+    },
+    Line2_ : {
+        position: 'absolute',
+        overflow: 'visible',
+        width: 225,
+        height: 2,
+        left: 94.5,
+        top: 340,
     },
     Password_FieldEye1 : {
         position: 'absolute',
@@ -208,6 +199,9 @@ const styles = StyleSheet.create({
         height: 55,
         left: 46,
         top: 662,
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#737373',
     },
     Group_30 : {
         position: 'absolute',
@@ -239,7 +233,8 @@ const styles = StyleSheet.create({
         top: 7,
         overflow: 'visible',
     },
-    path_bh : {
+
+    paths: {
         overflow: 'visible',
         position: 'absolute',
         width: 5.364,
@@ -255,14 +250,28 @@ const styles = StyleSheet.create({
         left: 0,
         top: 4.155,
     },
+    emails: {
+        position : 'absolute',
+        top : 15,
+        left : -40,
+    },
+    arrow:{
+        position: 'absolute',
+        top : 250,
+        left : 62,
+        overflow: 'visible',
+    }
 });
 
 class SignUpPage extends Component{
     render(){
+        const goToDashboard = () => {
+            Actions.dashboard()
+        };
         return(
             <View style={styles.container}>
-                  <Text style={styles.hello}>Hello</Text>
-                  <Text style={styles.subHeading}>Sign in to continue</Text>
+                <Text style={styles.hello}>Hello</Text>
+                <Text style={styles.subHeading}>Sign in to continue</Text>
 
                 <View style={styles.Group_23}>
                     <Svg style={styles.Oval}>
@@ -283,7 +292,14 @@ class SignUpPage extends Component{
                         placeholder='Full Name'
                     />
                 </View>
-
+                <View style={styles.Line2_}>
+                    <Input
+                        placeholder='Email'
+                    />
+                    <Image style={styles.emails}
+                           source = {require('../../assets/images/email.png')}
+                    />
+                </View>
                 <View style={styles.Password_FieldEye1}>
                     <View style={styles.eye_closed1}>
                         <Svg style={styles.shape1} viewBox="0 0 16 5.333">
@@ -307,14 +323,13 @@ class SignUpPage extends Component{
                         </Path>
                     </Svg>
                 </View>
-
                 <View style={styles.P1Line}>
                     <Input
                         type= "password"
                         placeholder='Create Password'
+                        secureTextEntry={true}
                     />
                 </View>
-
                 <View style={styles.Password_FieldEye2}>
                     <View style={styles.eye_closed2}>
                         <Svg style={styles.shape2} viewBox="0 0 16 5.333">
@@ -343,29 +358,34 @@ class SignUpPage extends Component{
                     <Input
                         type= "password"
                         placeholder='Repeat Password'
+                        secureTextEntry={true}
                     />
                 </View>
                 <Svg style={styles.Rectangle_1531}>
-                    <Rect
-                        fill = 'transparent'
-                        stroke = 'rgba(115,115,115,1)'
-                        strokeWidth = '1'
-                        strokeLinejoin = 'miter'
-                        strokeLinecap = 'butt'
-                        strokeMiterlimit = '4'
-                        shapeRendering = 'auto'
-                        rx="5" ry="5" x="0" y="0" width="165" height="55">
+                    <Rect onPress = {goToDashboard}
+                          fill = 'transparent'
+                          stroke = 'rgba(115,115,115,1)'
+                          strokeWidth = '1'
+                          strokeLinejoin = 'miter'
+                          strokeLinecap = 'butt'
+                          strokeMiterlimit = '4'
+                          shapeRendering = 'auto'
+                          rx="5" ry="5" x="0" y="0" width="165" height="55">
                     </Rect>
                 </Svg>
-                <View style={styles.Group_30}>
-                    <View style={styles.Sign_Up}><Text style={styles.sign_up_text}>Sing Up</Text></View>
+                <View style={styles.Group_30} >
+                    <View style={styles.Sign_Up}><Text onPress = {goToDashboard} style={styles.sign_up_text}>Sing Up</Text></View>
                     <View style={styles.icon_arrow_small_bg}>
-                        <Svg style={styles.path_bh} viewBox="1281.487 1163.709 4.157 8.314">
+                        <Image
+                            style={styles.arrow}
+                            source = {require('../../assets/images/arrow.png')}
+                        />
+                        <Svg style={styles.paths} viewBox="1281.487 1163.709 4.157 8.314">
                             <Path
                                 fill = 'transparent'
                                 stroke = 'rgba(115,115,115,1)'
                                 strokeWidth = '1'
-                                strokeLinejoin = 'round'
+                                strokeLinejoin= 'round'
                                 strokeLinecap = 'round'
                                 strokeMiterlimit = '4'
                                 shapeRendering = 'auto'

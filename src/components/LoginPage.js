@@ -7,26 +7,9 @@ import {
 }
     from 'react-native';
 import Svg, {
-    Circle,
     Ellipse,
-    G,
-    TSpan,
-    TextPath,
     Path,
-    Polygon,
-    Polyline,
-    Line,
     Rect,
-    Use,
-    Image,
-    Symbol,
-    Defs,
-    LinearGradient,
-    RadialGradient,
-    Stop,
-    ClipPath,
-    Pattern,
-    Mask,
 } from 'react-native-svg';
 import {Actions} from "react-native-router-flux";
 import { Input } from 'react-native-elements';
@@ -396,8 +379,8 @@ class LoginPage extends Component{
         const goToSignUp = () => {
             Actions.signUp()
         };
-        const goToAbout = () => {
-            Actions.login()
+        const goToDashboard = () => {
+           Actions.dashboard()
         };
         return(
             <View style={styles.container}>
@@ -405,6 +388,7 @@ class LoginPage extends Component{
                 <Input
                     type= "password"
                     placeholder='Password'
+                    secureTextEntry={true}
                 />
                 </View>
                 <Text style={styles.welcome}>Welcome!</Text>
@@ -452,7 +436,7 @@ class LoginPage extends Component{
                     />
                 </View>
                 <Svg style={styles.Rectangle_1530}>
-                    <Rect onPress = {goToAbout}
+                    <Rect onPress = {goToDashboard}
                           fill = 'transparent'
                           stroke = 'rgba(115,115,115,1)'
                           strokeWidth = '1'
